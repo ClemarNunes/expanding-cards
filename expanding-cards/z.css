@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/*A propriedade CSS box-sizingnos permite incluir o preenchimento e a borda na largura e altura total de um elemento.*/
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    width: 90vw;
+}
+
+
+/*COVER: imensiona a imagem (mantendo sua proporção) para o menor tamanho possível para preencher o contêiner*/
+/*AUTO: Dimensiona a imagem de fundo na direção correspondente de forma que suas proporções intrínsecas sejam mantidas.*/
+.panel{
+    background-size: cover;
+    /* background-size: auto 100%; */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 30vw;
+    border-radius: 50px;
+    color:#fff;
+    cursor: pointer;
+    flex: 0.5;
+    margin: 10px;
+    position: relative;
+    transition: 0.7s ease-in;
+    
+}
+
+.panel h3{
+    font-size: 40px;
+    position: absolute;
+    bottom: 20px;
+    margin: 0;
+    opacity: 0;
+    top: 190px;
+    left: 260px;
+    white-space: nowrap;
+}
+
+.panel.active{
+    flex: 5;
+}
+
+
+
+/* 
+    ease- especifica um efeito de transição com início lento, rápido e final lento (este é o padrão)
+    linear- especifica um efeito de transição com a mesma velocidade do início ao fim
+    ease-in- especifica um efeito de transição com um início lento
+    ease-out- especifica um efeito de transição com final lento
+    ease-in-out- especifica um efeito de transição com início e fim lentos 
+*/
+ .panel.active h3{
+    opacity: 1;
+    transition: opacity 1.5s ease-in 0.1s;
+ }
+
+
+
+ /* :nth-of-type() => A pseudoclasse CSS combina elementos com base em sua posição entre irmãos do mesmo tipo (nome da tag).:nth-of-type()*/
+ @media(max-width: 480px){
+    .container{
+        width: 100vw;
+    }
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5){
+        display: none;
+    }
+ }
